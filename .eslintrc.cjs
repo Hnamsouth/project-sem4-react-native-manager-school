@@ -1,7 +1,6 @@
 module.exports = {
   root: true, // 表示当前目录即为根目录，ESLint 规则将被限制到该目录下
   env: { browser: true, es2020: true, node: true },
-  /* 解析器 */
   parser: '@typescript-eslint/parser', // 指定ESLint解析器
   parserOptions: {
     project: './tsconfig.json', // tsconfig.json的路径
@@ -13,7 +12,6 @@ module.exports = {
     extraFileExtensions: ['.json'],
   },
   settings: {
-    // 识别 @ # alias
     'import/resolver': {
       alias: {
         map: [
@@ -24,7 +22,6 @@ module.exports = {
       },
     },
   },
-  /* ESLint 中基础配置需要继承的配置 */
   extends: [
     'airbnb',
     'airbnb-typescript',
@@ -46,12 +43,6 @@ module.exports = {
     'import',
     'unused-imports',
   ],
-  /**
-   * 定义规则
-   * "off" 或 0 - 关闭规则
-   * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
-   * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
-   */
   rules: {
     'no-console': 'off',
     'no-unused-vars': 'off',
@@ -66,7 +57,6 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
 
-    // 不用手动引入react
     'react/react-in-jsx-scope': 'off',
     'react/button-has-type': 'off',
     'react/require-default-props': 'off',

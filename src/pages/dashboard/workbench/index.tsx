@@ -5,9 +5,8 @@ import BannerCard from './banner-card';
 import { Applications, Conversion } from './conversion_applications';
 import CurrentDownload from './current-download';
 import NewInvoice from './new-invoice';
-import TopAuthor from './top-authors';
-import TopInstalled from './top-installed';
-import TopRelated from './top-related';
+// import TopInstalled from './top-installed';
+// import TopRelated from './top-related';
 import TotalCard from './total-card';
 
 function Workbench() {
@@ -67,15 +66,12 @@ function Workbench() {
       </Row>
 
       <Row gutter={[16, 16]} className="mt-4" justify="center">
-        <Col span={23} md={12} lg={16}>
+        <Col span={23} md={12} lg={24}>
           <NewInvoice />
-        </Col>
-        <Col span={23} md={12} lg={8}>
-          <TopRelated />
         </Col>
       </Row>
 
-      <Row gutter={[16, 16]} className="mt-4" justify="center">
+      {/* <Row gutter={[16, 16]} className="mt-4" justify="center">
         <Col span={24} md={12}>
           <TopInstalled />
         </Col>
@@ -83,7 +79,7 @@ function Workbench() {
         <Col span={24} md={12}>
           <TopAuthor />
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 }

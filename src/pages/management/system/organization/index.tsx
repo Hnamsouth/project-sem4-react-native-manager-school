@@ -7,7 +7,6 @@ import {
   Input,
   InputNumber,
   Modal,
-  Popconfirm,
   Radio,
   Row,
   Select,
@@ -16,12 +15,10 @@ import {
 import Table, { ColumnsType } from 'antd/es/table';
 import { TableRowSelection } from 'antd/es/table/interface';
 import { useEffect, useState } from 'react';
+import * as XLSX from 'xlsx';
 
 import orgService from '@/api/services/orgService';
-import { IconButton, Iconify } from '@/components/icon';
 import ProTag from '@/theme/antd/components/tag';
-
-import OrganizationChart from './organization-chart';
 
 import { Organization } from '#/entity';
 
@@ -46,10 +43,10 @@ export default function OrganizationPage() {
   });
 
   const columns: ColumnsType<Organization> = [
-    { title: 'Name', dataIndex: 'name', width: 300 },
-    { title: 'Order', dataIndex: 'order', align: 'center', width: 60 },
+    { title: 'Môn', dataIndex: 'name', width: 300 },
+    { title: 'Điểm', dataIndex: 'order', align: 'center', width: 60 },
     {
-      title: 'Status',
+      title: 'Xếp Loại',
       dataIndex: 'status',
       align: 'center',
       width: 120,
@@ -57,25 +54,7 @@ export default function OrganizationPage() {
         <ProTag color={status === 'enable' ? 'success' : 'error'}>{status}</ProTag>
       ),
     },
-    { title: 'Desc', dataIndex: 'desc', align: 'center', width: 300 },
-    {
-      title: 'Action',
-      key: 'operation',
-      align: 'center',
-      width: 100,
-      render: (_, record) => (
-        <div className="flex w-full justify-center text-gray">
-          <IconButton onClick={() => onEdit(record)}>
-            <Iconify icon="solar:pen-bold-duotone" size={18} />
-          </IconButton>
-          <Popconfirm title="Delete the Organization" okText="Yes" cancelText="No" placement="left">
-            <IconButton>
-              <Iconify icon="mingcute:delete-2-fill" size={18} className="text-error" />
-            </IconButton>
-          </Popconfirm>
-        </div>
-      ),
-    },
+    { title: 'Nhận xét', dataIndex: 'desc', align: 'center', width: 300 },
   ];
 
   // rowSelection objects indicates the need for row selection
@@ -100,30 +79,17 @@ export default function OrganizationPage() {
     searchForm.resetFields();
   };
 
-  const onCreate = () => {
-    setOrganizationModalProps((prev) => ({
-      ...prev,
-      show: true,
-      title: 'Create New',
-      formValue: {
-        ...prev.formValue,
-        id: '',
-        name: '',
-        order: 1,
-        desc: '',
-        status: 'enable',
-      },
-    }));
-  };
-
-  const onEdit = (formValue: Organization) => {
-    setOrganizationModalProps((prev) => ({
-      ...prev,
-      show: true,
-      title: 'Edit',
-      formValue,
-    }));
-  };
+  interface dataSource {
+    id: number;
+    name: string;
+    email: string;
+  }
+  function exportToExcel(data: dataSource[], fileName: string): void {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(data);
+    XLSX.utils.book_append_sheet(wb, ws, 'dataSource');
+    XLSX.writeFile(wb, `${fileName}.xlsx`);
+  }
 
   return (
     <Space direction="vertical" size="large" className="w-full">
@@ -131,12 +97,12 @@ export default function OrganizationPage() {
         <Form form={searchForm}>
           <Row gutter={[16, 16]}>
             <Col span={24} lg={6}>
-              <Form.Item<SearchFormFieldType> label="Name" name="name" className="!mb-0">
+              <Form.Item<SearchFormFieldType> label="Môn" name="name" className="!mb-0">
                 <Input />
               </Form.Item>
             </Col>
             <Col span={24} lg={6}>
-              <Form.Item<SearchFormFieldType> label="Status" name="status" className="!mb-0">
+              <Form.Item<SearchFormFieldType> label="Điểm" name="status" className="!mb-0">
                 <Select>
                   <Select.Option value="enable">
                     <ProTag color="success">Enable</ProTag>
@@ -160,10 +126,10 @@ export default function OrganizationPage() {
       </Card>
 
       <Card
-        title="Organization List"
+        title="Thông tin"
         extra={
-          <Button type="primary" onClick={onCreate}>
-            New
+          <Button onClick={() => exportToExcel(data || [], 'users')} type="primary">
+            Export
           </Button>
         }
       >
@@ -178,9 +144,9 @@ export default function OrganizationPage() {
         />
       </Card>
 
-      <Card title="Organization Chart">
+      {/* <Card title="Organization Chart">
         <OrganizationChart organizations={data} />
-      </Card>
+      </Card> */}
 
       <OrganizationModal {...organizationModalPros} />
     </Space>
@@ -217,8 +183,8 @@ function OrganizationModal({ title, show, formValue, onOk, onCancel }: Organizat
         </Form.Item>
         <Form.Item<Organization> label="Status" name="status" required>
           <Radio.Group optionType="button" buttonStyle="solid">
-            <Radio value="enable"> Enable </Radio>
-            <Radio value="disable"> Disable </Radio>
+            <Radio value="enable"> Giỏi </Radio>
+            <Radio value="disable"> Học Lại </Radio>
           </Radio.Group>
         </Form.Item>
         <Form.Item<Organization> label="Desc" name="desc">

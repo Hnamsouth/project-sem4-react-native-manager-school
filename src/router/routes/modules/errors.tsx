@@ -25,14 +25,14 @@ const errors: AppRouteObject[] = [
       key: '/error',
     },
     children: [
-      {
-        path: '403',
-        element: <Page403 />,
-        meta: {
-          label: 'sys.menu.error.403',
-          key: '/error/403',
-        },
-      },
+      // {
+      //   path: '403',
+      //   element: <Page403 />,
+      //   meta: {
+      //     label: 'sys.menu.error.403',
+      //     key: '/error/403',
+      //   },
+      // },
       {
         path: '404',
         element: <Page404 />,
@@ -41,14 +41,14 @@ const errors: AppRouteObject[] = [
           key: '/error/404',
         },
       },
-      {
-        path: '500',
-        element: <Page500 />,
-        meta: {
-          label: 'sys.menu.error.500',
-          key: '/error/500',
-        },
-      },
+      // {
+      //   path: '500',
+      //   element: <Page500 />,
+      //   meta: {
+      //     label: 'sys.menu.error.500',
+      //     key: '/error/500',
+      //   },
+      // },
     ],
   },
 ];

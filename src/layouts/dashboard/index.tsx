@@ -20,9 +20,6 @@ function DashboardLayout() {
 
   const mainEl = useRef(null);
   const { scrollY } = useScroll({ container: mainEl });
-  /**
-   * y轴是否滚动
-   */
   const [offsetTop, setOffsetTop] = useState(false);
   const onOffSetTop = useCallback(() => {
     scrollY.on('change', (scrollHeight) => {
@@ -73,7 +70,6 @@ function DashboardLayout() {
 export default DashboardLayout;
 
 const StyleWrapper = styled.div<{ $themeMode?: ThemeMode }>`
-  /* 设置滚动条的整体样式 */
   ::-webkit-scrollbar {
     width: 8px; /* 设置滚动条宽度 */
   }

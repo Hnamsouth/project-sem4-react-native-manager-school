@@ -1,4 +1,3 @@
-// https://numeraljs.com/
 import numeral from 'numeral';
 
 type InputValue = string | number | null | undefined;
