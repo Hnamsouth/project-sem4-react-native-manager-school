@@ -27,8 +27,8 @@ export const ErrorRoutes: AppRouteObject = {
     </AuthGuard>
   ),
   children: [
-    { path: '403', element: <Page403 /> },
+    // { path: '403', element: <Page403 /> },
     { path: '404', element: <Page404 /> },
-    { path: '500', element: <Page500 /> },
+    // { path: '500', element: <Page500 /> },
   ],
 };

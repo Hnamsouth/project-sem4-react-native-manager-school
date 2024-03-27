@@ -1,22 +1,22 @@
 {
   "common": {
-    "okText": "确认",
-    "closeText": "关闭",
-    "cancelText": "取消",
-    "loadingText": "加载中...",
-    "saveText": "保存",
-    "delText": "删除",
-    "resetText": "重置",
-    "searchText": "搜索",
-    "queryText": "查询",
+    "okText": "Xác nhận",
+    "closeText": "Đóng",
+    "cancelText": "Hủy bỏ",
+    "loadingText": "Đang tải...",
+    "saveText": "Lưu",
+    "delText": "Xóa",
+    "resetText": "Đặt lại",
+    "searchText": "Tìm kiếm",
+    "queryText": "Truy vấn",
 
-    "inputText": "请输入",
-    "chooseText": "请选择",
+    "inputText": "Vui lòng nhập",
+    "chooseText": "Vui lòng chọn",
 
-    "redo": "刷新",
-    "back": "返回",
+    "redo": "Làm mới",
+    "back": "Quay lại",
 
-    "light": "亮色主题",
-    "dark": "黑暗主题"
+    "light": "Chủ đề sáng",
+    "dark": "Chủ đề tối"
   }
 }

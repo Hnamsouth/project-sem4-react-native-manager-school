@@ -3,7 +3,7 @@ import { ItemRender } from 'antd/es/upload/interface';
 import { m } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-import { varFade } from '@/components/animate/variants';
+// import { varFade } from '@/components//variants';
 import { Iconify, SvgIcon } from '@/components/icon';
 import { fBytes } from '@/utils/format-number';
 

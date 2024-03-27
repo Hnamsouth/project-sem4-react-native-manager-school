@@ -25,7 +25,7 @@ export default function BannerCard() {
           className="mt-4 text-lg font-semibold md:text-xl"
           style={{ color: themeToken.colorPrimaryActive }}
         >
-          <h4>Welcome back 👋 </h4>
+          <h4>Welcome back👋 </h4>
           <h4>{username}</h4>
         </div>
         <p
