@@ -6,10 +6,6 @@ import glass_buy from '@/assets/images/glass/ic_glass_buy.png';
 import glass_message from '@/assets/images/glass/ic_glass_message.png';
 import glass_users from '@/assets/images/glass/ic_glass_users.png';
 import { Iconify } from '@/components/icon';
-import ChartBar from '@/pages/components/chart/view/chart-bar';
-import ChartMixed from '@/pages/components/chart/view/chart-mixed';
-import ChartPie from '@/pages/components/chart/view/chart-pie';
-import ChartRadar from '@/pages/components/chart/view/chart-radar';
 import { useThemeToken } from '@/theme/hooks';
 
 import AnalysisCard from './analysis-card';
@@ -79,32 +75,6 @@ function Analysis() {
                 .toString()}, ${Color(theme.colorError).alpha(0.2).toString()}) rgb(255, 255, 255)`,
             }}
           />
-        </Col>
-      </Row>
-
-      <Row gutter={[16, 16]} className="mt-8" justify="center">
-        <Col span={23} lg={12} xl={16}>
-          <Card title="Website Visits">
-            <ChartMixed />
-          </Card>
-        </Col>
-        <Col span={23} lg={12} xl={8}>
-          <Card title="Current Visits">
-            <ChartPie />
-          </Card>
-        </Col>
-      </Row>
-
-      <Row gutter={[16, 16]} className="mt-8" justify="center">
-        <Col span={23} lg={12} xl={16}>
-          <Card title="Conversion Rates">
-            <ChartBar />
-          </Card>
-        </Col>
-        <Col span={23} lg={12} xl={8}>
-          <Card title="Current Subject">
-            <ChartRadar />
-          </Card>
         </Col>
       </Row>
 
