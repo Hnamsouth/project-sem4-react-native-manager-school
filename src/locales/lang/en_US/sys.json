@@ -124,12 +124,6 @@
           }
         }
       },
-      "disabled": "Item Disabled",
-      "label": "Item Label",
-      "frame": "Item External",
-      "external_link": "External Link",
-      "iframe": "Iframe",
-      "blank": "Blank",
       "calendar": "Calendar",
       "kanban": "Kanban",
       "error": {
