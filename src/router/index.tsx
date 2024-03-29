@@ -4,7 +4,7 @@ import { Navigate, RouteObject, RouterProvider, createHashRouter } from 'react-r
 import DashboardLayout from '@/layouts/dashboard';
 import AuthGuard from '@/router/components/auth-guard';
 import { usePermissionRoutes } from '@/router/hooks';
-import { ErrorRoutes } from '@/router/routes/error-routes';
+// import { ErrorRoutes } from '@/router/routes/error-routes';
 
 import { AppRouteObject } from '#/router';
 
@@ -30,7 +30,7 @@ export default function Router() {
     children: [{ index: true, element: <Navigate to={HOMEPAGE} replace /> }, ...permissionRoutes],
   };
 
-  const routes = [LoginRoute, asyncRoutes, ErrorRoutes, PAGE_NOT_FOUND_ROUTE];
+  const routes = [LoginRoute, asyncRoutes, PAGE_NOT_FOUND_ROUTE];
 
   const router = createHashRouter(routes as unknown as RouteObject[]);
   return <RouterProvider router={router} />;
