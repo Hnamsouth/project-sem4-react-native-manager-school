@@ -86,7 +86,7 @@ const THU_PERMISSION = {
   icon: 'ic-analysis',
   type: PermissionType.CATALOGUE,
   route: 'demoo',
-  order: 1,
+  order: 2,
   children: [
     {
       id: '8426999229400911',
@@ -100,15 +100,73 @@ const THU_PERMISSION = {
   ],
 };
 
+const STUDENT_PERMISSION = {
+  id: '9100714781921112',
+  parentId: '',
+  label: 'Student Manager',
+  name: 'Student',
+  icon: 'ic-user',
+  type: PermissionType.CATALOGUE,
+  route: 'studentManager',
+  order: 3,
+  children: [
+    {
+      id: '8426999229400912',
+      parentId: '9100714781921112',
+      label: 'Students',
+      name: 'Student',
+      type: PermissionType.MENU,
+      route: 'students',
+      component: '/student_manager/students.tsx',
+    },
+    {
+      id: '8426999229400913',
+      parentId: '9100714781921112',
+      label: 'Create Student',
+      name: 'Student',
+      type: PermissionType.MENU,
+      route: 'createStudent',
+      component: '/student_manager/create-student.tsx',
+    },
+  ],
+};
+
+const TEACHER_PERMISSION = {
+  id: '9100714781921112',
+  parentId: '',
+  label: 'Student Manager',
+  name: 'Student',
+  icon: 'ic-user',
+  type: PermissionType.CATALOGUE,
+  route: 'studentManager',
+  order: 3,
+  children: [
+    {
+      id: '8426999229400912',
+      parentId: '9100714781921112',
+      label: 'Students',
+      name: 'Student',
+      type: PermissionType.MENU,
+      route: 'students',
+      component: '/student_manager/students.tsx',
+    },
+    {
+      id: '8426999229400913',
+      parentId: '9100714781921112',
+      label: 'Create Student',
+      name: 'Student',
+      type: PermissionType.MENU,
+      route: 'createStudent',
+      component: '/student_manager/create-student.tsx',
+    },
+  ],
+};
+
 export const PERMISSION_LIST = [
   DASHBOARD_PERMISSION,
   THU_PERMISSION,
-  // MANAGEMENT_PERMISSION,
-  // COMPONENTS_PERMISSION,
-  // FUNCTIONS_PERMISSION,
-  // MENU_LEVEL_PERMISSION,
-  // ...ERRORS_PERMISSION,
-  // ...OTHERS_PERMISSION,
+  STUDENT_PERMISSION,
+  TEACHER_PERMISSION,
 ];
 
 /**
