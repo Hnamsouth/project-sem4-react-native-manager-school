@@ -8,8 +8,8 @@ import { AppRouteObject } from '#/router';
 
 const Thu = lazy(() => import(`@/pages/demoo/thu`));
 
-const dashboard: AppRouteObject = {
-  order: 1,
+const thuRoute: AppRouteObject = {
+  order: 2,
   path: 'demoo',
   element: (
     <Suspense fallback={<CircleLoading />}>
@@ -34,4 +34,4 @@ const dashboard: AppRouteObject = {
   ],
 };
 
-export default dashboard;
+export default thuRoute;
