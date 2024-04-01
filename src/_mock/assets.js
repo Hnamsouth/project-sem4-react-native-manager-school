@@ -132,32 +132,23 @@ const STUDENT_PERMISSION = {
 };
 
 const TEACHER_PERMISSION = {
-  id: '9100714781921112',
+  id: '9100714781921189',
   parentId: '',
-  label: 'Student Manager',
-  name: 'Student',
+  label: 'Teacher Manager',
+  name: 'Teacher',
   icon: 'ic-user',
   type: PermissionType.CATALOGUE,
-  route: 'studentManager',
-  order: 3,
+  route: 'teacherManager',
+  order: 4,
   children: [
     {
-      id: '8426999229400912',
-      parentId: '9100714781921112',
-      label: 'Students',
-      name: 'Student',
+      id: '8426999229412111',
+      parentId: '9100714781921189',
+      label: 'Teachers',
+      name: 'Teacher',
       type: PermissionType.MENU,
-      route: 'students',
-      component: '/student_manager/students.tsx',
-    },
-    {
-      id: '8426999229400913',
-      parentId: '9100714781921112',
-      label: 'Create Student',
-      name: 'Student',
-      type: PermissionType.MENU,
-      route: 'createStudent',
-      component: '/student_manager/create-student.tsx',
+      route: 'teachers',
+      component: '/teacher_manager/teachers.tsx',
     },
   ],
 };

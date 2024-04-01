@@ -51,3 +51,14 @@ export interface Role {
   desc?: string;
   permission?: Permission[];
 }
+
+export interface Student {
+  id: string;
+  gender: boolean;
+  firstName: string;
+  lastName: string;
+  birthday: number;
+  address: string;
+  status: number;
+  studentCode: string;
+}

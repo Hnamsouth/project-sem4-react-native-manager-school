@@ -1,6 +1,19 @@
-import { Button, Col, Row, Select, Form, Input, Table } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Col,
+  Row,
+  Select,
+  Form,
+  Input,
+  Table,
+  Modal,
+  DatePicker,
+  Radio,
+  Upload,
+} from 'antd';
 import Column from 'antd/es/table/Column';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const options = [
   { value: '1A1', label: '1A1' },
@@ -11,6 +24,20 @@ const options = [
 const renderSTT = (text: string, record: unknown, index: number) => <span>{index + 1}</span>;
 
 export default function Teacher() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
       <Row style={{ marginBottom: '20px' }}>
@@ -117,14 +144,120 @@ export default function Teacher() {
             style={{ marginBottom: '8px', paddingRight: '56px' }}
           >
             <div>
-              <Button type="primary" style={{ width: '20%' }}>
-                Tìm kiếm
+              <Button type="primary">Tìm kiếm</Button>
+              <Button type="default" onClick={showModal} style={{ marginLeft: '20px' }}>
+                Thêm
               </Button>
-              <Link to="/create-student">
-                <Button type="default" style={{ width: '20%', marginLeft: '25px' }}>
-                  Thêm
-                </Button>
-              </Link>
+              <Modal
+                title="Thêm giáo viên"
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+              >
+                <div>
+                  <Form
+                    name="wrap"
+                    labelCol={{ flex: '110px' }}
+                    labelAlign="left"
+                    labelWrap
+                    wrapperCol={{ flex: 1 }}
+                    colon={false}
+                    style={{ maxWidth: 600 }}
+                  >
+                    <Form.Item
+                      label="Họ:"
+                      name="lastname"
+                      rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Tên:"
+                      name="firstname"
+                      rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Ngày sinh:"
+                      name="Dob"
+                      rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                      <DatePicker />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Giới tính:"
+                      name="gender"
+                      rules={[{ required: true, message: 'Please select!' }]}
+                    >
+                      <Radio.Group>
+                        <Radio value="male">Nam</Radio>
+                        <Radio value="female">Nữ</Radio>
+                      </Radio.Group>
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Địa chỉ:"
+                      name="address"
+                      rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                      <Input.TextArea autoSize={{ minRows: 1, maxRows: 6 }} />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Số điện thoại:"
+                      name="phone"
+                      rules={[
+                        { required: true, message: 'Please input!' },
+                        { pattern: /^[0-9]+$/, message: 'Please enter a valid number!' },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Email:"
+                      name="email"
+                      rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Quốc tịch:"
+                      name="nation"
+                      rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Số CCCD:"
+                      name="citizen-id"
+                      rules={[
+                        { required: true, message: 'Please input!' },
+                        { pattern: /^[0-9]+$/, message: 'Please enter a valid number!' },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="Ảnh đại diện:"
+                      name="avatar"
+                      valuePropName="fileList"
+                      getValueFromEvent={(e) => e.fileList}
+                    >
+                      <Upload name="avatar" listType="picture">
+                        <Button icon={<UploadOutlined />}>Chọn ảnh</Button>
+                      </Upload>
+                    </Form.Item>
+                  </Form>
+                </div>
+              </Modal>
             </div>
           </Form.Item>
         </Col>
@@ -151,8 +284,7 @@ export default function Teacher() {
         <Column title="Số hiệu cán bộ" width={120} align="center" className="custom-column" />
         <Column title="Họ và tên" width={200} align="center" className="custom-column" />
         <Column title="Giới tính" width={90} align="center" className="custom-column" />
-        <Column title="Ngày sinh" align="center" className="custom-column" />
-        <Column title="Dân tộc" align="center" className="custom-column" />
+        <Column title="Ngày sinh" align="center" className="custom-column" />{' '}
         <Column title="Phòng ban" align="center" className="custom-column" />
       </Table>
     </div>
