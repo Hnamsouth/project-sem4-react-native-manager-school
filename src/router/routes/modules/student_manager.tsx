@@ -20,22 +20,22 @@ const studentManager: AppRouteObject = {
   meta: {
     label: 'Student Manager',
     icon: <SvgIcon icon="ic-user" className="ant-menu-item-icon" size="24" />,
-    key: '/student-manager',
+    key: '/student_manager',
   },
   children: [
     {
       index: true,
-      element: <Navigate to="student-manager" replace />,
+      element: <Navigate to="student_manager" replace />,
     },
     {
       path: 'students',
       element: <StudentManager />,
-      meta: { label: 'Students', key: '/student-manager/students' },
+      meta: { label: 'Students', key: '/student_manager/students' },
     },
     {
       path: 'createStudent',
       element: <CreateStudent />,
-      meta: { label: 'Create student', key: '/student-manager/create-student' },
+      meta: { label: 'Create student', key: '/student_manager/create-student' },
     },
   ],
 };

@@ -7,11 +7,10 @@ import { CircleLoading } from '@/components/loading';
 import { AppRouteObject } from '#/router';
 
 const TeacherManager = lazy(() => import(`@/pages/teacher_manager/teachers`));
-const CreateTeacher = lazy(() => import(`@/pages/student_manager/create-student`));
 
 const teacherManager: AppRouteObject = {
-  order: 3,
-  path: 'teacher-manager',
+  order: 4,
+  path: 'teacher_manager',
   element: (
     <Suspense fallback={<CircleLoading />}>
       <Outlet />
@@ -20,22 +19,17 @@ const teacherManager: AppRouteObject = {
   meta: {
     label: 'Teacher Manager',
     icon: <SvgIcon icon="ic-user" className="ant-menu-item-icon" size="24" />,
-    key: '/teacher-manager',
+    key: '/teacher_manager',
   },
   children: [
     {
       index: true,
-      element: <Navigate to="teacher-manager" replace />,
+      element: <Navigate to="teacher_manager" replace />,
     },
     {
       path: 'teachers',
       element: <TeacherManager />,
-      meta: { label: 'Teachers', key: '/teacher-manager/teachers' },
-    },
-    {
-      path: 'createTeacher',
-      element: <CreateTeacher />,
-      meta: { label: 'Create teacher', key: '/teacher-manager/create-teacher' },
+      meta: { label: 'Teachers', key: '/teacher_manager/teachers' },
     },
   ],
 };

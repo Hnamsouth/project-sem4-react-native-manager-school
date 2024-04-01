@@ -1,6 +1,10 @@
 import { Button, Col, Row, Select, Form, Input, Table, Modal, Radio, DatePicker } from 'antd';
 import Column from 'antd/es/table/Column';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import studentService from '@/api/services/studentService';
+
+import { Student } from '#/entity';
 
 const options = [
   { value: '1A1', label: '1A1' },
@@ -8,28 +12,25 @@ const options = [
   { value: '1A3', label: '1A3' },
 ];
 
-const demo = [
-  {
-    id: 1,
-    name: 'Nguyễn Văn A',
-    class: '10A1',
-  },
-  {
-    id: 2,
-    name: 'Trần Thị B',
-    class: '10A2',
-  },
-  {
-    id: 3,
-    name: 'Lê Văn C',
-    class: '10A1',
-  },
-];
+const renderSTT = (text: string, record: string, index: number) => <span>{index + 1}</span>;
 
-const renderSTT = (text: string, record: unknown, index: number) => <span>{index + 1}</span>;
-
-export default function Student() {
+export default function Students() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  const fetchStudents = async () => {
+    try {
+      const studentsData = await studentService.getAllStudents();
+      console.log('students : ', studentsData);
+      // setStudents();
+    } catch (error) {
+      console.error('Error fetching students:', error);
+    }
+  };
 
   // const navigate = useNavigate();
 
@@ -149,9 +150,7 @@ export default function Student() {
             style={{ marginBottom: '8px', paddingRight: '56px' }}
           >
             <div>
-              <Button type="primary" style={{ width: '20%' }}>
-                Tìm kiếm
-              </Button>
+              <Button type="primary">Tìm kiếm</Button>
               <Button type="default" onClick={showModal} style={{ marginLeft: '20px' }}>
                 Thêm
               </Button>
@@ -216,7 +215,7 @@ export default function Student() {
                         name="class"
                         rules={[{ required: true, message: 'Please input!' }]}
                       >
-                        <DatePicker />
+                        <Select />
                       </Form.Item>
 
                       <Input.TextArea autoSize={{ minRows: 1, maxRows: 6 }} />
@@ -229,7 +228,7 @@ export default function Student() {
         </Col>
       </Row>
       <Table
-        dataSource={demo}
+        dataSource={students}
         style={{
           border: '1px solid #ddd',
           borderRadius: '5px',
@@ -250,7 +249,7 @@ export default function Student() {
         />
         <Column
           title="Mã học sinh"
-          dataIndex="id"
+          dataIndex="studentCode"
           width={120}
           align="center"
           className="custom-column"
@@ -258,14 +257,16 @@ export default function Student() {
         <Column
           title="Họ và tên"
           dataIndex="name"
+          render={(text, record: Student) => (
+            <span>{`${record.lastName} ${record.firstName}`}</span>
+          )}
           width={200}
           align="center"
           className="custom-column"
         />
-        <Column title="Lớp" dataIndex="class" align="center" className="custom-column" />
-        <Column title="Ngày sinh" align="center" className="custom-column" />
-        <Column title="Nơi sinh" align="center" className="custom-column" />
-        <Column title="Lớp" align="center" className="custom-column" />
+        <Column title="Status" dataIndex="status" align="center" className="custom-column" />
+        <Column title="Ngày sinh" dataIndex="birthday" align="center" className="custom-column" />
+        <Column title="Nơi sinh" dataIndex="address" align="center" className="custom-column" />
         {/* <Column
           title=" "
           key="action"
