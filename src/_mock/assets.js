@@ -86,7 +86,7 @@ const THU_PERMISSION = {
   icon: 'ic-analysis',
   type: PermissionType.CATALOGUE,
   route: 'demoo',
-  order: 1,
+  order: 2,
   children: [
     {
       id: '8426999229400911',
